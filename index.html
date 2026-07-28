@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innocent Mkhwana | Portfolio</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- General Reset & Variables --- */
+        :root {
+            --primary-blue: #2563eb;
+            --dark-blue: #1e40af;
+            --light-blue: #eff6ff;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Layout Utilities --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--dark-blue);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .section-title i {
+            color: var(--primary-blue);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            padding: 120px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--white);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            background-color: #ddd; /* wert */
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--light-blue);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+
+        /* --- About & Education --- */
+        .bg-light {
+            background-color: var(--light-blue);
+        }
+
+        .about-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .education-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .education-card h3 {
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+        }
+
+        .graduation {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .modules {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background-color: var(--light-blue);
+            color: var(--dark-blue);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- Skills Section --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .skill-category ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e5e7eb;
+            color: var(--text-light);
+        }
+
+        .skill-category ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* --- Projects Section --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 180px;
+            background-color: #cbd5e1; /* Placeholder for screenshot */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-weight: bold;
+        }
+
+        .project-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-content h3 {
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+        }
+
+        .tech-stack {
+            font-size: 0.85rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        /* --- Experience & Certifications --- */
+        .exp-cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .exp-card, .cert-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .cert-card ul li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-light);
+        }
+	/* --- Certificate Download Buttons --- */
+.cert-card ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.cert-card ul li:last-child {
+    border-bottom: none;
+}
+
+.cert-card ul li span {
+    flex-grow: 1;
+    color: var(--text-light);
+}
+
+.cert-btn {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cert-btn:hover {
+    background-color: var(--dark-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+}
+        .cert-card ul li i {
+            color: #10b981; /* Green checkmark */
+        }
+
+        /* --- Contact Section --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .contact-item {
+            padding: 20px;
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .contact-item h4 {
+            margin-bottom: 10px;
+            color: var(--dark-blue);
+        }
+
+        .contact-item a {
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* --- Back to Top Button --- */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: none;
+            font-size: 1.2rem;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #backToTop:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-3px);
+        }
+
+        /* --- Responsive Tweaks --- */
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .section-title {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <!-- Replace 'wert.JPG' with your actual image file path -->
+            <img src="wert.jpg" alt="Innocent Mkhwana" class="hero-image">
+            <div class="hero-text">
+                <h1>Innocent Mkhwana</h1>
+                <h2>Final-Year BSc Information Technology Student</h2>
+                <p>Software Developer | Full-Stack Developer | Database Enthusiast</p>
+                <a href="CV.pdf" download class="btn btn-primary"><i class="fas fa-file-download"></i> Download CV</a>
+                <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact Me</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-user"></i> About Me</h2>
+            <p class="about-text">
+                I am a final-year Bachelor of Science in Information Technology student at North-West University. 
+                I have developed practical skills in software development, database systems, web development, and 
+                mobile applications through academic and personal projects. I enjoy solving problems with technology 
+                and continuously learning new programming tools and frameworks.
+            </p>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="bg-light">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+            <div class="education-card">
+                <h3><i class="fas fa-university"></i> North-West University</h3>
+                <span class="graduation">Bachelor of Science in Information Technology | Expected Graduation: 2026</span>
+                <p><strong>Relevant Modules:</strong></p>
+                <div class="modules">
+                    <span class="tag">Software Engineering</span>
+                    <span class="tag">Database Systems</span>
+                    <span class="tag">Web Development</span>
+                    <span class="tag">Computer Networks</span>
+                    <span class="tag">Operating Systems</span>
+                    <span class="tag">Mobile App Development</span>
+                    <span class="tag">Artificial Intelligence</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-laptop-code"></i> Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming</h3>
+                    <ul>
+                        <li>Java</li>
+                        <li>Python</li>
+                        <li>C#</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-globe"></i> Web Development</h3>
+                    <ul>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript</li>
+                        <li>Bootstrap</li>
+                        <li>ASP.NET</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Tools & Databases</h3>
+                    <ul>
+                        <li>Git & GitHub</li>
+                        <li>Oracle SQL</li>
+                        <li>SQL Server</li>
+                        <li>Visual Studio</li>
+                        <li>VS Code</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="projects" class="bg-light">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-folder-open"></i> Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <img src="expense-tracker.png" alt="Expense Tracker App" class="project-img" style="width: 100%; height: 180px; object-fit: cover;">
+                    <div class="project-content">
+                        <h3>💰 Expense Tracker</h3>
+                        <p class="tech-stack">.NET MAUI, SQLite</p>
+                        <p>A mobile application that enables users to record, categorize, and manage personal expenses efficiently.</p>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <img src="li.png" alt="Livestock Management System" class="project-img" style="width: 100%; height: 180px; object-fit: cover;">
+                    <div class="project-content">
+                        <h3>🐄 Livestock Management System</h3>
+                        <p class="tech-stack">Java, SQL</p>
+                        <p>A comprehensive management system for tracking livestock, inventory, employees, payroll, and finances.</p>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <img src="pf.png" alt="Portfolio Website" class="project-img" style="width: 100%; height: 180px; object-fit: cover;">
+                    <div class="project-content">
+                        <h3>🌐 Portfolio Website</h3>
+                        <p class="tech-stack">HTML, CSS, JavaScript, ASP.NET</p>
+                        <p>A responsive personal website showcasing education, projects, technical skills, and contact information.</p>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <img src="sc.png" alt="SQL Database Project" class="project-img" style="width: 100%; height: 180px; object-fit: cover;">
+                    <div class="project-content">
+                        <h3>🗄️ SQL Database Project</h3>
+                        <p class="tech-stack">Oracle SQL</p>
+                        <p>Designed and implemented a relational database using normalization, primary/foreign keys, joins, and complex queries.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Certifications Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> Experience & Certifications</h2>
+            <div class="exp-cert-grid">
+                <div class="exp-card">
+                    <h3><i class="fas fa-user-graduate"></i> Student Software Developer</h3>
+                    <p style="color: var(--text-light); margin-top: 15px;">
+                        Worked on multiple academic software development projects involving Java, C#, SQL, and web technologies. 
+                        Collaborated with classmates to design, develop, test, and document software applications.
+                    </p>
+                </div>
+                <div class="cert-card">
+    <h3><i class="fas fa-certificate"></i> Online Certifications</h3>
+    <ul style="margin-top: 15px;">
+        <li>
+            <i class="fas fa-check-circle"></i> 
+            <span>CISSP Security Assessment, Testing and Security Operations</span>
+            <a href="Certificate in Introduction to CISSP Security Assessment _ Testing Operationsand Security Operations.pdf" download class="cert-btn">
+                <i class="fas fa-download"></i> Download
+            </a>
+        </li>
+        <li>
+            <i class="fas fa-check-circle"></i> 
+            <span>Introduction to Cyber Security</span>
+            <a href="Certificate in Introducton to Cyber Security.pdf" download class="cert-btn">
+                <i class="fas fa-download"></i> Download
+            </a>
+        </li>
+        <li>
+            <i class="fas fa-check-circle"></i> 
+            <span>Introduction to Cybersecurity</span>
+            <a href="Certificate in Introduction to Cybersecurity.pdf" download class="cert-btn">
+                <i class="fas fa-download"></i> Download
+            </a>
+        </li>
+    </ul>
+</div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-light">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-envelope"></i> Contact Me</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h4>Email</h4>
+                    <a href="mailto:innoradam@gmail.com">innoradam@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h4>Phone</h4>
+                    <a href="tel:+27839295245">+27839295245</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>Location</h4>
+                    <p>Vanderbijlpark, South Africa</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <h4>LinkedIn</h4>
+                    <a href="https:www.linkedin.com/in/innor-mkhwana-3ba233396 " target="_blank">www.linkedin.com/in/innor-mkhwana-3ba233396</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <h4>GitHub</h4>
+                    <a href="https://github.com/Innocent777" target="_blank">github.com/Innocent777</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Innocent Mkhwana. All rights reserved.</p>
+        <p>Built with <i class="fas fa-heart" style="color: #ef4444;"></i> by Innocent Mkhwana</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Back to Top Button Logic
+        const backToTopButton = document.getElementById("backToTop");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopButton.classList.add("show");
+            } else {
+                backToTopButton.classList.remove("show");
+            }
+        };
+
+        backToTopButton.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+</body>
+</html>
